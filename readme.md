@@ -1,6 +1,6 @@
 Jenkins Integration with GitHub for Automated CI/CD
 Overview
-This lab focuses on configuring Jenkins to automatically trigger builds from a GitHub repository whenever changes are detected. You will create a CI/CD pipeline for your chosen application (excluding GoLang), which will include stages for building, testing, and notifying the team about the results.
+This lab focuses on configuring the Jenkins to automatically trigger builds from a GitHub repository whenever changes are detected. You will create a CI/CD pipeline for your chosen application (excluding GoLang), which will include stages for building, testing, and notifying the team about the results.
 
 Objectives
 Integrate Jenkins with GitHub to trigger builds on code changes.
