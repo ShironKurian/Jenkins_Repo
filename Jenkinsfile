@@ -1,38 +1,101 @@
 pipeline {
+
     agent any
+
     stages {
+
         stage('Checkout') {
+
             steps {
-                git branch: 'main', url: 'https://github.com/ShironKurian/Jenkins_Repo.git'
+
+                script {
+
+                    echo 'Cloning repository...'
+
+                    checkout scm
+
+                }
+
             }
+
         }
+ 
         stage('Build') {
+
             steps {
-                echo 'Building the application...'
+
+                script {
+
+                    echo 'Simulating build process...'
+
+                    if (isUnix()) {
+
+                        sh 'echo "Building on Unix/Linux"'
+
+                    } else {
+
+                        bat 'echo Building on Windows'
+
+                    }
+
+                    echo 'Build complete' // Print message after build
+
+                }
+
             }
+
         }
+ 
         stage('Test') {
+
             steps {
-                echo 'Running tests...'
-                sh 'echo "Tests passed!"'
+
+                script {
+
+                    echo 'Running tests...'
+
+                    if (isUnix()) {
+
+                        sh 'echo "Running tests on Unix/Linux"'
+
+                    } else {
+
+                        bat 'echo Running tests on Windows'
+
+                    }
+
+                    echo 'Test complete' // Print message after tests
+
+                }
+
             }
+
         }
+ 
         stage('Deploy') {
+
             steps {
-                echo 'Deploying the application (simulated)...'
+
+                script {
+
+                    echo 'Deploying application...'
+
+                    if (isUnix()) {
+
+                        sh 'echo "Deploying on Unix/Linux"'
+
+                    } else {
+
+                        bat 'echo Deploying on Windows'
+
+                        echo 'Application deployed on Windows' // Print message after deployment on Windows
+
+                    }
+
+                }
+
             }
+
         }
+
     }
-    post {
-        success {
-            mail to: 'your-college-email@example.com',
-                 subject: "Jenkins Build Success",
-                 body: "The build was successful!"
-        }
-        failure {
-            mail to: 'your-college-email@example.com',
-                 subject: "Jenkins Build Failed",
-                 body: "The build failed. Check Jenkins logs for more details."
-        }
-    }
-}
